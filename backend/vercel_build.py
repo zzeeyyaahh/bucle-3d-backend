@@ -18,9 +18,15 @@ def main() -> None:
     run(" ".join([py, "manage.py migrate --noinput"]))
 
     username = os.environ.get("DJANGO_SUPERUSER_USERNAME")
+    email = os.environ.get("DJANGO_SUPERUSER_EMAIL")
     password = os.environ.get("DJANGO_SUPERUSER_PASSWORD")
-    if username and password:
-        run(" ".join([py, "manage.py createsuperuser --noinput"]))
+    if username and email and password:
+        try:
+            run(" ".join([py, "manage.py createsuperuser --noinput"]))
+        except subprocess.CalledProcessError as exc:
+            print(f"superuser already exists or could not be created: {exc}", flush=True)
+    else:
+        print("DJANGO_SUPERUSER_* not fully set — skipping superuser creation.", flush=True)
 
 
 if __name__ == "__main__":
