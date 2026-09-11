@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Send, Check, ShieldCheck, Cpu, Layers, X, Phone, Mail } from 'lucide-react';
 import { FloatingOrbs } from './components/FloatingOrbs';
 
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/+$/, '') ?? '';
+const API_URL = 'https://bucle-3d-backend.vercel.app';
 
 export default function App(): React.JSX.Element {
   const [subscribed, setSubscribed] = useState(false);
