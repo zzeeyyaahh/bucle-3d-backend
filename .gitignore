@@ -1,0 +1,26 @@
+# Node
+node_modules/
+dist/
+
+# Python / Django
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+db.sqlite3
+*.sqlite3
+*.db
+staticfiles/
+
+# Vercel CLI
+.vercel/
+
+# Env
+.env
+.env.local
+.env.production
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
