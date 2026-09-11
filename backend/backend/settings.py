@@ -90,6 +90,7 @@ if os.environ.get('DATABASE_URL'):
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600, conn_health_checks=True),
     }
+    DATABASES['default']['OPTIONS'] = {'connect_timeout': 15}
     if DEBUG:
         print(f'Using DATABASE_URL → {DATABASES["default"]["ENGINE"]}')
 else:
