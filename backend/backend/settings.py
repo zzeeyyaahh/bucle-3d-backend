@@ -155,26 +155,31 @@ if not DEBUG:
         raise ImproperlyConfigured('DATABASE_URL must be set when DJANGO_DEBUG=0')
 
 
+def _origins_from_env(name: str, default: str) -> list[str]:
+    origins = []
+    for value in os.environ.get(name, default).split(','):
+        value = value.strip().rstrip('/')
+        if value:
+            origins.append(value)
+    return origins
+
+
 # CORS
 # https://github.com/adamchainz/django-cors-headers
 
-CORS_ALLOWED_ORIGINS = [
-    o for o in os.environ.get(
-        'CORS_ALLOWED_ORIGINS',
-        'http://localhost:5173,http://127.0.0.1:5173',
-    ).split(',') if o
-]
+CORS_ALLOWED_ORIGINS = _origins_from_env(
+    'CORS_ALLOWED_ORIGINS',
+    'http://localhost:5173,http://127.0.0.1:5173',
+)
 CORS_ALLOW_CREDENTIALS = False
 
 
 # CSRF
 # Trust the frontend dev server so same-origin-form semantics work if needed.
-CSRF_TRUSTED_ORIGINS = [
-    o for o in os.environ.get(
-        'CSRF_TRUSTED_ORIGINS',
-        'http://localhost:5173,http://127.0.0.1:5173',
-    ).split(',') if o
-]
+CSRF_TRUSTED_ORIGINS = _origins_from_env(
+    'CSRF_TRUSTED_ORIGINS',
+    'http://localhost:5173,http://127.0.0.1:5173',
+)
 
 
 # Django REST Framework
