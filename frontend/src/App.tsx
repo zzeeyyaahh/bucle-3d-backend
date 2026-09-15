@@ -295,15 +295,14 @@ export default function App(): React.JSX.Element {
               We operate as an elite engineering lab for founders and brands who refuse to settle. Our process is rigorous: we audit your problem space before writing a single line of code, identify the architectural decisions that compound over time, and build systems that scale without accumulating technical debt.
             </p>
             <p>
-              From early-stage startups carving out a market position to established enterprises modernising legacy infrastructure — Bucle partners with organisations at every stage of ambition. What unites our clients is a shared belief: that world-class software is a strategic advantage, not a commodity.
+              From early-stage startups carving out a market position to established enterprises modernising legacy infrastructure, Bucle partners with organisations at every stage of ambition. What unites our clients is a shared belief: that world-class software is a strategic advantage, not a commodity.
             </p>
 
             {/* Stats row */}
-            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-[#0A192F]/10 mt-4">
+            <div className="grid grid-cols-2 gap-6 pt-4 border-t border-[#0A192F]/10 mt-4">
               {[
-                { num: '40+', label: 'Projects shipped' },
-                { num: '< 48h', label: 'Average response time' },
-                { num: '100%', label: 'Client retention rate' },
+                { num: '< 48h', label: 'Response time' },
+                { num: '100%', label: 'Client retention' },
               ].map((s, i) => (
                 <div key={i}>
                   <p className="text-3xl font-semibold text-[#0F0F11] tracking-tight">{s.num}</p>
